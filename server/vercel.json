@@ -1,12 +1,20 @@
 {
-    "version": 2,
-    "routes": [
-      { "src": "/(.*)", "dest": "/index.html" }
-    ],
-    "overrides": {
-      "index.json": {
-        "revalidate": 60
-      }
+  "version": 2,
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "overrides": {
+    "index.json": {
+      "revalidate": 60
     }
   }
-  
+}
