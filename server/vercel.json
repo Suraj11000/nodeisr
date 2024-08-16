@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.html" }
+    ],
+    "overrides": {
+      "index.json": {
+        "revalidate": 60
+      }
+    }
+  }
+  
