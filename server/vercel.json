@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/api/timestamp",
-      "dest": "/index.js"
+      "dest": "/index"
     }
   ]
 }
