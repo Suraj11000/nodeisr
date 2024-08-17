@@ -8,8 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/api/timestamp",
-      "dest": "/index.js"
+      "src": "./api/timestamp",
+      "dest": "/"
     }
   ]
 }
