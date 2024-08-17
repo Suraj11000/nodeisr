@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const port = process.env.PORT || 3000;
-const ISR_INTERVAL = 60 * 1000;
+const ISR_INTERVAL = 30 * 1000; // 30 seconds
 
 let cachedTimestamp = null;
 let lastFetchedTime = 0;
@@ -20,8 +20,13 @@ const getTimestamp = () => {
     lastFetchedTime = now;
     fs.writeFileSync(path.join(__dirname, 'timestamp.json'), JSON.stringify({ timestamp: cachedTimestamp }));
   } else {
-    const data = fs.readFileSync(path.join(__dirname, 'timestamp.json'));
-    cachedTimestamp = JSON.parse(data).timestamp;
+    try {
+      const data = fs.readFileSync(path.join(__dirname, 'timestamp.json'));
+      cachedTimestamp = JSON.parse(data).timestamp;
+    } catch (err) {
+      cachedTimestamp = generateTimestamp(); // fallback to generating timestamp if read fails
+      fs.writeFileSync(path.join(__dirname, 'timestamp.json'), JSON.stringify({ timestamp: cachedTimestamp }));
+    }
   }
 
   return cachedTimestamp;
