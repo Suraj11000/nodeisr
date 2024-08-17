@@ -30,7 +30,7 @@ const getTimestamp = () => {
 const requestListener = (req, res) => {
   console.log(`Request received: ${req.url}`);
 
-  if (req.url === '/api/timestamp' && req.method === 'GET') {
+  if (req.url === '/' && req.method === 'GET') {
     const timestamp = getTimestamp();
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ timestamp }));
